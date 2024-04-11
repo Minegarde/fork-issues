@@ -30725,7 +30725,6 @@ const gh = (0,_actions_github__WEBPACK_IMPORTED_MODULE_0__.getOctokit)(token);
 
 function getForkee() {
 	const forkee = _actions_github__WEBPACK_IMPORTED_MODULE_0__.context.payload.forkee;
-	console.log(forkee);
 	const [owner, repo] = forkee.full_name.split("/");
 	return {
 		owner,
@@ -30766,6 +30765,16 @@ async function createIssue(owner, repo, { title, body }) {
 async function copyAllIssues(owner, repo) {
 	try {
 		const forkee = getForkee();
+
+		console.log("SOURCE:");
+		console.log(`Owner: ${owner}, Repo: ${repo}\n\n`);
+		console.log("FORKEE:");
+		console.log(`Owner: ${forkee.owner}, Repo: ${forkee.repo}\n\n`);
+
+		if (forkee.owner !== owner) {
+			return;
+		}
+
 		const response = await gh.rest.issues.listForRepo({
 			owner,
 			repo,
@@ -30788,7 +30797,6 @@ async function copyAllIssues(owner, repo) {
 
 _actions_core__WEBPACK_IMPORTED_MODULE_1__.setOutput("created", getForkee());
 
-// copyAllIssues("David-MacD", "actions-test");
 copyAllIssues(source.owner, source.repo);
 
 })();

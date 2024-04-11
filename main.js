@@ -10,7 +10,6 @@ const gh = getOctokit(token);
 
 function getForkee() {
 	const forkee = context.payload.forkee;
-	console.log(forkee);
 	const [owner, repo] = forkee.full_name.split("/");
 	return {
 		owner,
@@ -51,6 +50,11 @@ async function createIssue(owner, repo, { title, body }) {
 async function copyAllIssues(owner, repo) {
 	try {
 		const forkee = getForkee();
+
+		console.log("SOURCE:");
+		console.log(`Owner: ${owner}, Repo: ${repo}\n\n`);
+		console.log("FORKEE:");
+		console.log(`Owner: ${forkee.owner}, Repo: ${forkee.repo}\n\n`);
 
 		if (forkee.owner !== owner) {
 			return;
