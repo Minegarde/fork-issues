@@ -1,0 +1,21 @@
+{
+	"name": "actions-test",
+	"version": "1.0.0",
+	"description": "Testing Actions!",
+	"main": "main.js",
+	"type": "module",
+	"scripts": {
+		"build": "ncc build main.js -o build",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@actions/core": "^1.10.1",
+		"@actions/github": "^6.0.0"
+	},
+	"devDependencies": {
+		"@vercel/ncc": "^0.38.1"
+	}
+}

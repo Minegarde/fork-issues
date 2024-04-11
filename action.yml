@@ -1,0 +1,16 @@
+name: 'Fork issues'
+description: 'Copy all issues from the forked respository'
+author: 'David MacDonald'
+inputs:
+  githubToken:
+    description: "Github token"
+    required: true
+outputs:
+  created: # output will be available to future steps 
+    description: 'The forkee'
+runs:
+  using: 'node20'
+  main: 'build/index.js'
+branding:
+  icon: 'activity'
+  color: 'green'
