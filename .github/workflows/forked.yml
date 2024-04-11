@@ -25,7 +25,7 @@ jobs:
         id: my_action
         uses: Minegarde/fork-issues@master
         with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          githubToken: ${{ secrets.PAP }}
 
       - name: Log the forkee
         run: |
